@@ -187,7 +187,7 @@ class Mouse:
         #compute knn state averages
         label_averages = pd.DataFrame()
         for label in np.unique(self.state_df['clusters_knn']):
-            label_averages[label] = self.Sxx_df_norm.loc[self.state_df[self.state_df['clusters_knn'] == label].index].mean(axis=0)
+            label_averages[label] = self.Sxx_norm.loc[self.state_df[self.state_df['clusters_knn'] == label].index].mean(axis=0)
         #determine which knn labels match each state
         if Nclusters == 4:
             state_averages = state_averages.drop(['Wake'], axis=1)

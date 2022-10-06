@@ -24,4 +24,4 @@ def train_lda_dpa_cores(dataframe,est,rand_idx,components=3):
 
 def train_lda_dpa_labels(dataframe,est,rand_idx,components=3):
     lda = LDA(n_components=components)
-    return lda, lda.fit_transform(dataframe.loc[rand_idx], est.labels_)
+    return lda, lda.fit_transform(dataframe.loc[rand_idx].values, est.labels_)

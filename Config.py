@@ -18,6 +18,8 @@ lda_components = 3
 dpa_k_max=201
 knn_n_neighbors = 201
 quantile_norm = 0.01
+eps = 2
+min_samples = 100
 #TODO outliers in one file plus parameters
 
 
@@ -25,6 +27,7 @@ quantile_norm = 0.01
 lda_figure_title_no_labels = 'LDA no labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
 lda_figure_title_dpc_labels = 'LDA DPC labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
 lda_figure_title_state_labels = 'LDA state labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
+lda_figure_title_outliers_labels = 'LDA state labels with outliers m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
 
 eeg_figure_title = 'EEG m{}-{}_{} '.format(mouse_id, experiment_id, file_id, )
 
@@ -42,7 +45,7 @@ offline_data_path = project_path + '/data/'
 
 average_states_path = offline_data_path + 'StateAverages.pkl'
 average_knn_path = offline_data_path + 'knn_average.joblib'
-average_lda_path = offline_data_path + 'lda_average2.joblib'
+average_lda_path = offline_data_path + 'lda_average.joblib' #use the version with the underscore for older versions of python
 
 state_df_filename = base_path + experimental_path + 'states_{}_{}_{}_m{}.pkl'.format(experiment_id, file_id, mouse_description, mouse_id)
 lda_filename = base_path + experimental_path + 'lda_{}_{}_{}_m{}.joblib'.format(experiment_id, file_id, mouse_description, mouse_id)
