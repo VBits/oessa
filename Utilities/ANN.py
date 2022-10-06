@@ -68,7 +68,7 @@ def label_data(m,rand_idx,reuse_weights=True):
     else:
         # Train ANN and save weights
         standardize_state_codes(m.state_df)
-        plot_ANN_model(model, BaseDir + ExpDir)
+        plot_ANN_model(model, OfflineConfig.base_path + OfflineConfig.experimental_path)
         classWeight = calculate_weights(m,rand_idx)
         model = train_model(model,m.Sxx_ext,m.state_df,classWeight,rand_idx)
         model.save_weights(OfflineConfig.offline_data_path + 'weights_Sxx_ext.h5')

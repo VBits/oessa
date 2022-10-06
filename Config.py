@@ -1,15 +1,15 @@
-import os
 
+#Update for each mouse
 base_path = 'D:/Project_Mouse/Ongoing_analysis/'
 experimental_path = '211207_B6Jv_Circadian_fos/Ephys/'
 file = '211213_000.smrx'
 mouse_description = 'B6Jv'
 mouse_id = 16
+
+#Update more rately
 experiment_id = experimental_path[:6]
 file_id = file[:6]
 dpa_z=0.9
-
-
 target_fs=100
 epoch_seconds = 2
 smoothing_window = 21
@@ -20,10 +20,9 @@ knn_n_neighbors = 201
 quantile_norm = 0.01
 eps = 2
 min_samples = 100
-#TODO outliers in one file plus parameters
 
 
-
+#No need to update normally
 lda_figure_title_no_labels = 'LDA no labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
 lda_figure_title_dpc_labels = 'LDA DPC labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)
 lda_figure_title_state_labels = 'LDA state labels m{}-{}_{}'.format(mouse_id, experiment_id, file_id)

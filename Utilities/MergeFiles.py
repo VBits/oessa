@@ -48,24 +48,6 @@ def combine_files(EphysDir,Folder,load=True):
     return Sxx_combined, multitaper_combined, states_combined
 
 
-EphysDir = 'D:/Project_Mouse/Ongoing_analysis/'
-Folder = 'Avoid_overfitting/'
-#Optional: Check if any datasets have 3 states and get rid of them
-report_states(EphysDir,Folder)
-#combine files to use for the training
-Sxx_combined, multitaper_combined,states_combined = combine_files(EphysDir,Folder,load=True)
-
-# get rid of any states that are artifacts
-Sxx_combined = Sxx_combined[states_combined['states']!='ambiguous']
-multitaper_combined = multitaper_combined[states_combined['states']!='ambiguous']
-states_combined = states_combined[states_combined['states']!='ambiguous']
-
-rand_idx = get_random_idx(Sxx_combined,size=200000)
-m.state_df = states_combined.loc[rand_idx]
-m.Sxx_df = Sxx_combined.loc[rand_idx]
-m.multitaper_df = multitaper_combined.loc[rand_idx]
-
-############################################################
 
 
 
