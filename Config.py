@@ -6,7 +6,7 @@ file = '211213_000.smrx'
 mouse_description = 'B6Jv'
 mouse_id = 16
 
-#Update more rately
+#Update more rarely
 experiment_id = experimental_path[:6]
 file_id = file[:6]
 dpa_z=0.9
