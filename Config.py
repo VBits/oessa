@@ -1,9 +1,13 @@
-
+"""
+experimental_path starts with an experiment ID
+file starts with a file ID
+We use dates that the experiment first started and a file first created as unique IDs
+"""
 #Update for each mouse
 base_path = 'D:/Project_Mouse/Ongoing_analysis/'
-experimental_path = '211207_B6Jv_Circadian_fos/Ephys/'
-file = '211213_000.smrx'
-mouse_description = 'B6Jv'
+experimental_path = '201022_Nms_NO_misting_burrowing/Ephys/'
+file = '201207_000_SD_duringDD_part1.smrx'
+mouse_description = 'Nms'
 mouse_id = 16
 
 #Update more rarely
