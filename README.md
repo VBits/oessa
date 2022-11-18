@@ -14,3 +14,18 @@ Input files:
 * A density based method of clustering is applied in low dimensional space to a subset of data. 4 states can be assigned (HTwake, LTwake, SWS, REM)<br/>
 * These labels can be propagated to the rest of the recording using the K-Nearest neighbors algorithm<br/>
 * Finally, outliers can be detected in the recording using DBSCAN and highlighted in the state dataframe before it gets saved 
+
+****Installation instructions:****
+<ol>
+<li>Activate the appropriate Anaconda environment </li>
+<li>You can install the latest version of setuptools using pip:
+<br/>
+<code> pip install --upgrade setuptools</code></li>
+<li>Navigate to Project directory and run:
+<br/>
+<code>python -m build </code></li>
+<li>You can install dependencies by running:
+<br/>
+<code>
+pip install ./dist/oessa-0.0.1.tar.gz</code></li>
+</ol>

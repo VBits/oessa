@@ -6,7 +6,7 @@ We use dates that the experiment first started and a file first created as uniqu
 #Update for each mouse
 base_path = 'D:/Project_Mouse/Ongoing_analysis/'
 experimental_path = '201022_Nms_NO_misting_burrowing/Ephys/'
-file = '201207_000_SD_duringDD_part1.smrx'
+file = '210120_000_SD_duringDD_part3.smrx'
 mouse_description = 'Nms'
 mouse_id = 16
 

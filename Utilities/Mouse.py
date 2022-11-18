@@ -151,6 +151,7 @@ class Mouse:
         # self.multitaper_df = pd.DataFrame(index=freqs, data=psd_est.T)
         time_idx = pd.date_range(start=self.start[0], freq='{}ms'.format(window_step/self.EEG_fs*1000), periods=len(psd_est))
         self.multitaper_df = pd.DataFrame(index=time_idx, data=psd_est,columns=freqs)
+        #Convert to Decibels
         self.multitaper_df = 10 * np.log(self.multitaper_df)
 
     #Smoothen the multitaper data with median filter
