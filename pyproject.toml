@@ -5,14 +5,16 @@ authors = [{name = "Vassilis Bitsikas"}]
 readme = "README.md"
 license = { file = "LICENSE" }
 dependencies = [
-    'tensorflow==2.3.0',
-    'easycython',
     'DPA',
+    'tensorflow==2.11.0',
+    'easycython',
     'joblib',
     'sonpy',
     'h5py',
     'nitime',
-    'importlib-metadata; python_version<"3.10"',
+    'numpy',
+    'pandas',
+    'importlib-metadata; python_version>"3.8"',
 ]
 
 

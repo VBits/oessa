@@ -17,10 +17,13 @@ Input files:
 
 ****Installation instructions:****
 <ol>
-<li>Activate the appropriate Anaconda environment </li>
+<li>Activate the appropriate Anaconda environment (Python version 3.8) </li>
 <li>You can install the latest version of setuptools using pip:
 <br/>
 <code> pip install --upgrade setuptools</code></li>
+<li>You can also install build using pip:
+<br/>
+<code> pip install --upgrade build</code></li>
 <li>Navigate to Project directory and run:
 <br/>
 <code>python -m build </code></li>
