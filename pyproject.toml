@@ -1,0 +1,25 @@
+[project]
+name = "oessa"
+version = "0.0.1"
+authors = [{name = "Vassilis Bitsikas"}]
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = [
+    'DPA',
+    'tensorflow==2.11.0',
+    'easycython',
+    'joblib',
+    'sonpy',
+    'h5py',
+    'nitime',
+    'numpy',
+    'pandas',
+    'importlib-metadata; python_version>"3.8"',
+]
+
+
+[tool.setuptools]
+py-modules = []
+
+[project.urls]
+Home = "https://github.com/VBits/oessa"

@@ -150,10 +150,12 @@ class Mouse:
 
         # self.multitaper_df = pd.DataFrame(index=freqs, data=psd_est.T)
         time_idx = pd.date_range(start=self.start[0], freq='{}ms'.format(window_step/self.EEG_fs*1000), periods=len(psd_est))
+
         self.multitaper_df = pd.DataFrame(index=time_idx, data=psd_est, columns=freqs)
 
         #####Below is old transformation performed that was converted back in spectral analyses
         self.multitaper_df = 10 * np.log(self.multitaper_df) ##Need to keep this transformation for effective clustering
+
 
     #Smoothen the multitaper data with median filter
     def smoothen_and_norm_spectrum(self, window_size=21,quantile=0.01):

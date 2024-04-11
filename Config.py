@@ -1,10 +1,16 @@
-
+"""
+experimental_path starts with an experiment ID
+file starts with a file ID
+We use dates that the experiment first started and a file first created as unique IDs
+"""
 #Update for each mouse
+
 base_path = 'D:/'
 experimental_path = '230830_Vglut2_hM3_VMH/ephys/'
 file = '230919_000.smrx'
 mouse_description = 'Vglut2'
 mouse_id = 9
+
 
 #Update more rarely
 experiment_id = experimental_path[:6]
