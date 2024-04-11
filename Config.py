@@ -1,8 +1,8 @@
 
 #Update for each mouse
 base_path = 'D:/'
-experimental_path = '230830_Vglut2_hM3_VMH/ephys/240411_TEST/'
-file = '230830_VGlut2VMH_ZT12.smrx'
+experimental_path = '230830_Vglut2_hM3_VMH/ephys/'
+file = '230919_000.smrx'
 mouse_description = 'Vglut2'
 mouse_id = 9
 
