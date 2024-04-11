@@ -21,7 +21,7 @@ Run small chunks of code as needed and follow instructions within terminal
 # 1. Get data for indicated genotype and channel.
 # Preprocess data, or load previously processed data
 m = process_EEG_data(OfflineConfig.mouse_description, OfflineConfig.mouse_id)
-rand_idx = get_random_idx(m.Sxx_ext, size=OfflineConfig.random_epoch_size)
+rand_idx = get_random_idx(m.Sxx_df, size=OfflineConfig.random_epoch_size)
 
 ########################################################################################################
 # 2. Create or load LDA space
@@ -39,6 +39,13 @@ savefigure_function(m,OfflineConfig.lda_figure_title_no_labels)
 load_state_df = query_yes_no("Do you want to load a previously created: \nm.state_df?")
 if load_state_df:
     m.state_df = pd.read_pickle(OfflineConfig.state_df_filename)
+
+#plot to check previous labels
+plot_LDA(m,rand_idx,labels=m.state_df['states'])
+
+#Optional: save labels for random sampled data of previously generated state dataframe
+savefigure_function(m,OfflineConfig.lda_figure_title_check_state_labels)
+
 # Recover previously saved KNN file
 load_KNN = query_yes_no("Do you want to load a previously created: \nKNN model")
 if load_KNN:
@@ -51,13 +58,16 @@ est = clustering_DPA(m,rand_idx,dpa_z=OfflineConfig.dpa_z)
 
 #Optional: Repeat clustering with DPA by tweaking Z, number of standard deviations
 #Hint: some times it can also help to select a new rand_idx
-# est = clustering_DPA(m,rand_idx,dpa_z=0.6)
+est = clustering_DPA(m,rand_idx,dpa_z=1.3)
+
+#Optional: Save clustering before manual merging
+savefigure_function(m,OfflineConfig.lda_figure_title_beforemerge_labels)
 
 #Optional: remap the spurious clusters into 4 labels
-label_dict = {0: [1,4,3,6],
-              1: [0],
-              2: [2],
-              3: [5]}
+label_dict = {0: [0,3,4,6],
+              1: [1],
+              2: [5],
+              3: [2]}
 merging_spurious_labels(m,rand_idx,label_dict,est)
 
 # Optional: save figure
@@ -85,7 +95,7 @@ savefigure_function(m,OfflineConfig.lda_figure_title_state_labels)
 
 # Train a density based model that will detect outliers (change EPS value as necessary)
 outlier_model = outlier_detection(m,rand_idx,eps=OfflineConfig.eps,min_samples = OfflineConfig.min_samples)
-# outlier_model = outlier_detection(m,rand_idx,eps=1.8)
+outlier_model = outlier_detection(m,rand_idx,eps=1.5)
 
 # Detect outliers in the whole recording
 predict_all_outliers(m,rand_idx,outlier_model, ambiguous_state=0)
@@ -97,6 +107,10 @@ savefigure_function(m,OfflineConfig.lda_figure_title_outliers_labels)
 ########################################################################################################
 # 7. Save files
 ### -------------------
+save_Sxx_df = query_yes_no("Do you want to store the Sxx dataframe?")
+if save_Sxx_df:
+    m.Sxx_df_uV2 = save_uV2(m)
+    m.Sxx_df_uV2.to_pickle(OfflineConfig.Sxx_df_uV2_filename)
 # Save State Dataframe
 save_state_df = query_yes_no("Do you want to store the state dataframe?")
 if save_state_df:

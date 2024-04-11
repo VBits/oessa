@@ -56,3 +56,9 @@ def query_option(question, valid_options=[1,2,3]):
             break
         else:
             sys.stdout.write("Valid options include one of the following: {}.\n".format(valid_options))
+
+def save_uV2(m):
+    #Convert Sxx_df from lndB used for clustering back to uV2
+    #uV2 = e^(dB/10)
+    m.Sxx_df_uV2 = np.exp(1) ** (m.Sxx_df / 10)
+    return m.Sxx_df_uV2

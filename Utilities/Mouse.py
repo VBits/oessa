@@ -150,8 +150,10 @@ class Mouse:
 
         # self.multitaper_df = pd.DataFrame(index=freqs, data=psd_est.T)
         time_idx = pd.date_range(start=self.start[0], freq='{}ms'.format(window_step/self.EEG_fs*1000), periods=len(psd_est))
-        self.multitaper_df = pd.DataFrame(index=time_idx, data=psd_est,columns=freqs)
-        self.multitaper_df = 10 * np.log(self.multitaper_df)
+        self.multitaper_df = pd.DataFrame(index=time_idx, data=psd_est, columns=freqs)
+
+        #####Below is old transformation performed that was converted back in spectral analyses
+        self.multitaper_df = 10 * np.log(self.multitaper_df) ##Need to keep this transformation for effective clustering
 
     #Smoothen the multitaper data with median filter
     def smoothen_and_norm_spectrum(self, window_size=21,quantile=0.01):
@@ -162,7 +164,7 @@ class Mouse:
         :return:
         """
         self.Sxx_df = self.multitaper_df.rolling(window_size, center=True, win_type=None, min_periods=2).median()
-        #normalize spectrum
+        #normalize spectrum. This is used in to compute knn state averages
         normalization = self.Sxx_df.quantile(q=quantile, axis=0)
         self.Sxx_norm = self.Sxx_df - normalization
 
@@ -215,6 +217,9 @@ class Mouse:
             self.state_df.replace(to_replace={"states": dict(state_dict)},inplace=True)
         else:
             print('Number of clusters not recognized. Automatic state assignment failed')
+
+
+
 
 
 
