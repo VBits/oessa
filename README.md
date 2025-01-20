@@ -1,6 +1,7 @@
 # oessa
 
 Offline EEG state space analysis (non-GUI version)
+<br/>(For GUI version that supports online and offline analysis, see this [repository](https://github.com/VBits/EEGspace))
 
 Input files: 
 <br/>1) .smrx files (Spike2 file format) 
